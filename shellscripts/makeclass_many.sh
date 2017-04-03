@@ -33,39 +33,39 @@ read gid
 count=0
 while [ "$count" -lt "$usercount" ]
 do
-#echo "사용자 계정 : "
+#echo "User ID: "
 read ID < addID
 
-#echo "사용자 패스워드 : "
+#echo "User Password: "
 read PASS < addID
 
-#echo "사용자 uid: "
+#echo "User uid: "
 
 if [ "$ID" = "" ]; then
 exit
 fi
 
 
-#계정번호 중복확인 및 에러검출
+# Check if overlapped uid, and there is error
 USER_COUNT_number=`cat /etc/passwd | grep -w "$uid" | wc -l`
 if [ "$USER_COUNT_number" -ge "1" ]; then
 echo "The User's number is OVERLAPPED!"
 exit
 fi
 
-#계정아이디 중복확인
+# Check if overlapped user's id
 USER_ID_count=`cat /etc/passwd | grep -w "$ID" | wc -l`
 if [ "$USER_ID_count" -ge "1" ]; then
 echo "The User's id is OVERLAPPED!"
 exit
 fi
 
-#신청자 학번입력
-#read -p "신청자 학번을 입력해 주세요 : " USER_NO
+# Write User's student number
+#read -p "Write User's student number : " USER_NO
 
 #USER_NO_count=`cat /etc/passwd | grep -w "$USER_NO" | wc -l`
 #if [ "$USER_NO_count" -ge "1" ]; then
-#echo "중복되는 학번이 존재합니다. 기존에 신청했는지 확인하여 주세요."
+#echo "There is student number collision. Please check if already registered."
 #exit
 #fi
 
